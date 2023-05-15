@@ -28,7 +28,7 @@ public class Weapon : MonoBehaviour
         // Disable the weapon to start with.
         DisableWeapon();
     }
-
+    
     // This is a virtual function that can be overridden by subclasses of Weapon.
     public virtual void Attack()
     {

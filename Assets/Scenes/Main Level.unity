@@ -606,8 +606,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  defaultWeapon: {fileID: 3962863713495565214, guid: 56efa5e36d601af47934e7b3e8f25889, type: 3}
-  equippedWeapon: {fileID: 0}
+  defaultWeapon: {fileID: 1514855790886482388, guid: 5f8a533b44e8d1e4182bc6bff925d073, type: 3}
+  equippedWeapon: {fileID: 1514855790886482388, guid: 5f8a533b44e8d1e4182bc6bff925d073, type: 3}
   weaponSlot: {fileID: 504766509}
 --- !u!58 &1148014235
 CircleCollider2D:
@@ -699,7 +699,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: dd73e6882ca739a47aedad3d4e2bf8c7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
