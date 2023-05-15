@@ -8,7 +8,7 @@ public class Weapon : MonoBehaviour
     // These variables will be used by all subclasses of Weapon.
     public Rigidbody2D rb; // The rigidbody component of the weapon.
     public SpriteRenderer sr; // The sprite renderer component of the weapon.
-    public BoxCollider2D boxCollider; // The box collider component of the weapon.
+    public Collider2D boxCollider; // The box collider component of the weapon.
 
     // These variables can be adjusted for each subclass of Weapon.
     public bool canAttack = true; // Whether or not the weapon can currently attack.
@@ -16,6 +16,7 @@ public class Weapon : MonoBehaviour
     public float attackRate; // The rate at which the weapon can attack.
     public float damage; // The amount of damage the weapon can deal.
 
+    public bool disableWeaponOnStart;
 
     // Start is called before the first frame update.
     void Start()
@@ -23,10 +24,10 @@ public class Weapon : MonoBehaviour
         // Get the rigidbody, sprite renderer, and box collider components of the weapon.
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponentInChildren<SpriteRenderer>();
-        boxCollider = GetComponent<BoxCollider2D>();
+        TryGetComponent(out boxCollider);
 
         // Disable the weapon to start with.
-        DisableWeapon();
+        if (disableWeaponOnStart) DisableWeapon();
     }
     
     // This is a virtual function that can be overridden by subclasses of Weapon.
@@ -49,7 +50,7 @@ public class Weapon : MonoBehaviour
     public void DisableWeapon()
     {
         sr.enabled = false;
-        boxCollider.enabled = false;
+        if (boxCollider) boxCollider.enabled = false;
     }
 
     // Enable the weapon by showing the sprite, enabling the box collider, and disabling the attack ability.
@@ -57,7 +58,7 @@ public class Weapon : MonoBehaviour
     {
         canAttack = false;
         sr.enabled = true;
-        boxCollider.enabled = true;
+        if (boxCollider) boxCollider.enabled = true;
     }
 
     // Reset the weapon's attack ability.
