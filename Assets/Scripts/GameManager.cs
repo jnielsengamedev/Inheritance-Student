@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     
     public TextMeshProUGUI scoreDisplay;
     public TextMeshProUGUI healthDisplay;
+    public TextMeshProUGUI speedDisplay;
 
     public void AddScore(int pointsToAdd)
     {

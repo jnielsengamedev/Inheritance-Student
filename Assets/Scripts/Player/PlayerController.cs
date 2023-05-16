@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    [SerializeField] private float moveSpeed = 5f;
     public Weapon defaultWeapon;
     public Weapon equippedWeapon;
     public Transform weaponSlot;
@@ -12,23 +12,52 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
 
-    public float health;
+    [SerializeField] private float health;
     public float maxHealth;
+
+    public float Health
+    {
+        get => health;
+        set
+        {
+            health = value;
+            gameManager.healthDisplay.text = HealthDisplayText(value);
+        }
+    }
+
+
+    public float MoveSpeed
+    {
+        get => moveSpeed;
+        set
+        {
+            moveSpeed = value;
+            gameManager.speedDisplay.text = SpeedDisplayText(value);
+        }
+    }
 
     public GameManager gameManager;
     
+    private static string SpeedDisplayText(float value) => $"Speed: {value}";
+
+    private static string HealthDisplayText(float value) => $"Health: {value}";
+
     void Start()
     {
         mainCamera = Camera.main;
 
         EquipWeapon(defaultWeapon);
+
+
+        // Set Health on the UI.
+        gameManager.healthDisplay.text = HealthDisplayText(health);
+
+        // Set Speed on the UI.
+        gameManager.speedDisplay.text = SpeedDisplayText(moveSpeed);
     }
 
     void Update()
     {
-        // Bind Health to the UI
-        gameManager.healthDisplay.text = $"Health: {health}";
-        
         // Get movement input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

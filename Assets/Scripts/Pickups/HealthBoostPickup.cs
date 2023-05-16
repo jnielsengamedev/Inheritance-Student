@@ -8,6 +8,7 @@ namespace Pickups
         {
             player.maxHealth += healthToAdd;
             player.HealAllHealth();
+            Destroy(gameObject);
         }
     }
 }

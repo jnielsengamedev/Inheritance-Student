@@ -5,10 +5,14 @@ namespace Pickups
     [RequireComponent(typeof(Collider2D))]
     public abstract class Pickup : MonoBehaviour
     {
+        protected SpriteRenderer _sprite;
+        protected Collider2D _collider;
+        
         private void Awake()
         {
-            var pickupCollider = GetComponent<Collider2D>();
-            pickupCollider.isTrigger = true;
+            _sprite = GetComponent<SpriteRenderer>();
+            _collider = GetComponent<Collider2D>();
+            _collider.isTrigger = true;
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -16,7 +20,6 @@ namespace Pickups
             if (!other.CompareTag("Player")) return;
             var player = other.GetComponent<PlayerController>();
             Activate(player);
-            Destroy(gameObject);
         }
 
         protected virtual void Activate(PlayerController player)

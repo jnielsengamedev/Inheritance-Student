@@ -8,7 +8,8 @@ namespace Pickups
 
         protected override void Activate(PlayerController player)
         {
-            player.health = Mathf.Clamp(player.health += healingAmount, 0, player.maxHealth);
+            player.Health = Mathf.Clamp(player.Health += healingAmount, 0, player.maxHealth);
+            Destroy(gameObject);
         }
     }
 }
