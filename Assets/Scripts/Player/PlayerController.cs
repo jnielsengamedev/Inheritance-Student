@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 
     public float health;
     public float maxHealth;
+
+    public GameManager gameManager;
     
     void Start()
     {
@@ -24,6 +26,9 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // Bind Health to the UI
+        gameManager.healthDisplay.text = $"Health: {health}";
+        
         // Get movement input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -64,5 +69,10 @@ public class PlayerController : MonoBehaviour
     public void UnequipWeapon()
     {
         Destroy(equippedWeapon);
+    }
+
+    public void HealAllHealth()
+    {
+        health = maxHealth;
     }
 }
