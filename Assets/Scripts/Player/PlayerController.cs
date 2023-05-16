@@ -102,6 +102,6 @@ public class PlayerController : MonoBehaviour
 
     public void HealAllHealth()
     {
-        health = maxHealth;
+        Health = maxHealth;
     }
 }
