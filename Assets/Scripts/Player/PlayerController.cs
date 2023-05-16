@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -14,8 +12,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 movement;
 
-
-
+    public float health;
+    public float maxHealth;
+    
     void Start()
     {
         mainCamera = Camera.main;
